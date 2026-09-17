@@ -1,0 +1,61 @@
+.approach {
+  background: var(--ink);
+  color: var(--milk);
+}
+
+.eyebrowOnDark {
+  color: var(--accent-deep, var(--accent));
+  filter: brightness(1.35);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(32px, 6vw, 96px);
+}
+
+.title {
+  margin-top: 20px;
+  font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+  font-weight: 500;
+}
+
+.lead {
+  margin-top: 24px;
+  color: rgba(246, 244, 239, 0.72);
+  line-height: 1.65;
+  max-width: 48ch;
+}
+
+.principles {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.principle {
+  padding-block: 28px;
+  border-top: 1px solid var(--line-on-dark);
+}
+
+.principles li:last-child .principle {
+  border-bottom: 1px solid var(--line-on-dark);
+}
+
+.principle h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.principle p {
+  color: rgba(246, 244, 239, 0.68);
+  line-height: 1.6;
+  max-width: 52ch;
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

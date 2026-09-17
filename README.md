@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NORDEN Architecture — демонстрационный лендинг
 
-## Getting Started
+Одностраничный коммерческий сайт вымышленного бюро архитектуры и дизайна
+интерьера **NORDEN Architecture**. Проект сделан как демонстрационная работа
+для портфолио frontend-разработчика: показывает подход к вёрстке,
+адаптивности, UI-интерактивности и структуре Next.js-приложения на
+реалистичном примере дорогого коммерческого сайта.
 
-First, run the development server:
+**Важно:** NORDEN Architecture — вымышленная студия. Все проекты, кейсы,
+контакты и цифры на сайте выдуманы для демонстрации и не описывают
+реальную компанию.
+
+## Стек
+
+- [Next.js 16](https://nextjs.org/) (App Router) + TypeScript
+- Обычный React без тяжёлых UI-библиотек
+- CSS Modules + CSS-переменные (дизайн-токены) — без Tailwind и аналогов
+- Собственные inline SVG-иллюстрации вместо стоковых фото — единый
+  графический стиль без зависимости от внешних сервисов изображений
+- `next/font` (Playfair Display + Inter) с самохостингом шрифтов
+
+## Возможности
+
+- Адаптивная навигация: меняет фон при прокрутке, мобильное меню на узких
+  экранах
+- Крупный выразительный hero-блок с CTA и статистикой
+- Блоки услуг, кейсов, подхода, этапов работы и преимуществ
+- Форма заявки с клиентской валидацией (имя, телефон/email, согласие на
+  обработку данных), состояниями отправки и доступной разметкой
+- Плавное появление секций при прокрутке (`IntersectionObserver`),
+  отключается при `prefers-reduced-motion`
+- Семантическая вёрстка, видимые focus-состояния, skip-link, подписанные
+  поля формы — базовая доступность соблюдена по всему сайту
+
+## Запуск проекта
+
+Требуется Node.js 18.18+ (рекомендуется 20+).
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Открыть [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Другие команды
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build   # production-сборка
+npm run start   # запуск собранного проекта
+npm run lint    # проверка ESLint
+```
 
-## Learn More
+## Структура проекта
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/                  # роутинг App Router, глобальные стили, метаданные
+  components/           # секции сайта и переиспользуемые UI-компоненты
+    graphics/            # inline SVG-иллюстрации (hero, карточки проектов)
+    Reveal/               # обёртка для появления блоков при скролле
+  lib/data.ts           # контент сайта (услуги, кейсы, этапы, преимущества)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Каждый смысловой блок сайта — отдельный компонент со своим CSS-модулем
+рядом с ним, без глобальной "простыни" стилей.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Заметка про форму заявки
 
-## Deploy on Vercel
+Форма полностью рабочая на фронтенде: валидирует поля, показывает ошибки и
+имитирует отправку с состоянием загрузки и успеха. Реального API нет — это
+демонстрационный проект без бэкенда. Для продакшн-использования достаточно
+подключить обработчик `handleSubmit` в
+`src/components/ContactForm/ContactForm.tsx` к своему API.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Карточка для портфолио (черновик)
+
+**NORDEN Architecture — лендинг архитектурной студии**
+
+Дизайн и вёрстка коммерческого одностраничного сайта на Next.js и
+TypeScript: крупная типографика, минималистичная графитово-молочная
+палитра, собственная SVG-графика вместо стоков, адаптив от смартфона до
+широкого десктопа, рабочая форма заявки с валидацией и аккуратные
+скролл-анимации. Проект демонстрационный — использован для примера
+качества вёрстки и интерактивности в портфолио.
